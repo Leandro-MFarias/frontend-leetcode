@@ -1,0 +1,40 @@
+[
+  {
+    "id": 1,
+    "title": "Exercício 01 - Par ou Ímpar",
+    "subtitle": "Dado um número inteiro, determine se ele é par ou ímpar.",
+    "description": "Implemente uma função que receba um número inteiro n e retorne a string Par se o número for par, ou Ímpar se o número for ímpar. A verificação deve ser feita utilizando uma estrutura de controle if.",
+    "exemple": [
+      { "exemplo": 1, "entrada": "n = 4", "saida": "Par" },
+      { "exemplo": 2, "entrada": "n = 7", "saida": "Ímpar" }
+    ],
+    "functionSignature": "function parOuImpar(n) { }",
+    "testCases": [
+      { "input": 5, "expectedOutput": "Ímpar" },
+      { "input": 10, "expectedOutput": "Par" },
+      { "input": 26, "expectedOutput": "Par" }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Exercício 02 - Classificação de Idade",
+    "subtitle": "Classifique uma pessoa em criança, adolescente, adulto ou idoso.",
+    "description": "Implemente uma função que receba um número inteiro representando a idade de uma pessoa e retorne uma string com a categoria correspondente: 'Criança' para idades de 0 a 12, 'Adolescente' para idades de 13 a 17, 'Adulto' para idades de 18 a 59 e 'Idoso' para idades de 60 ou mais. A classificação deve ser feita utilizando uma estrutura de controle if-else.",
+    "exemple": [
+      { "exemplo": 1, "entrada": "idade = 8", "saida": "Criança" },
+      { "exemplo": 2, "entrada": "idade = 15", "saida": "Adolescente" },
+      { "exemplo": 3, "entrada": "idade = 35", "saida": "Adulto" },
+      { "exemplo": 4, "entrada": "idade = 70", "saida": "Idoso" }
+    ],
+    "functionSignature": "function classificarIdade(idade) { }",
+    "testCases": [
+      { "input": 8, "expectedOutput": "Criança" },
+      { "input": 15, "expectedOutput": "Adolescente" },
+      { "input": 35, "expectedOutput": "Adulto" },
+      { "input": 70, "expectedOutput": "Idoso" },
+      { "input": 12, "expectedOutput": "Criança" },
+      { "input": 18, "expectedOutput": "Adulto" },
+      { "input": 60, "expectedOutput": "Idoso" }
+    ]
+  }
+]
