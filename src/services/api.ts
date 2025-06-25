@@ -39,3 +39,11 @@ export async function logout() {
   });
   return;
 }
+
+export async function listsExercise() {
+  const res = await fetch(`${api}`, {
+    method: "GET",
+    credentials: "include",
+  });
+  return res.json();
+}

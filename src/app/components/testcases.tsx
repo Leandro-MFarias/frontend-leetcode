@@ -1,7 +1,7 @@
 "use client";
 
 import { SquareCheckBigIcon } from "lucide-react";
-import { ContainerHeader } from "./container-header";
+import { ContainerHeader } from "./exercise-header";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 

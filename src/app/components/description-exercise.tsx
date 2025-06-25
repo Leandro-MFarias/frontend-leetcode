@@ -1,8 +1,7 @@
 import { ScanTextIcon } from "lucide-react";
-import { ContainerHeader } from "./container-header";
+import { ContainerHeader } from "./exercise-header";
 
 export function DescriptionExercise({ exercise }) {
-
   return (
     <div className="bg-[#1e1e1e] rounded-xl h-full border shadow-md">
       <ContainerHeader

@@ -76,7 +76,7 @@ export default function Login() {
         </form>
         <Link href="/register">
           <p className="text-muted-foreground text-center text-lg">
-            Não possui cadastro?{" "}
+            Não possui cadastro?
             <span className="font-bold text-white">Registre-se</span>
           </p>
         </Link>

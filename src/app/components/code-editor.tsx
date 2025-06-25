@@ -1,7 +1,7 @@
 "use client";
 
 import { CloudUploadIcon, CodeXmlIcon } from "lucide-react";
-import { ContainerHeader } from "./container-header";
+import { ContainerHeader } from "./exercise-header";
 import { Editor } from "@monaco-editor/react";
 import { options, url } from "@/api/route";
 import { useState } from "react";
