@@ -1,6 +1,6 @@
 import { LoginSchema, RegisterSchema } from "@/app/(auth)/_validators";
 
-const api = "http://localhost:3333";
+export const api = "http://localhost:3333";
 
 export async function createAccount(data: RegisterSchema) {
   const res = await fetch(`${api}/register`, {
@@ -40,10 +40,10 @@ export async function logout() {
   return;
 }
 
-export async function listsExercise() {
-  const res = await fetch(`${api}`, {
+export async function userInfo() {
+  const res = await fetch(`${api}/user`, {
     method: "GET",
     credentials: "include",
-  });
-  return res.json();
+  })
+  return res.json()
 }

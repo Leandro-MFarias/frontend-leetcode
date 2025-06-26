@@ -3,12 +3,12 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { LoginSchema, loginSchema } from "../_validators";
-import { singIn } from "@/services/api";
+import { singIn } from "@/services/auth";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function Login() {
-  const router = useRouter()
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -20,7 +20,7 @@ export default function Login() {
   async function onSubmit(data: LoginSchema) {
     try {
       await singIn(data);
-      router.push("/")
+      router.push("/");
     } catch (error) {
       console.log("Login erro:", error);
     }

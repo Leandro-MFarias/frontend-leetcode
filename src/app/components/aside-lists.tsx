@@ -1,6 +1,6 @@
 "use client";
 
-import { listsExercise } from "@/services/api";
+import { listsExercise } from "@/services/listExercise";
 import { useEffect, useState } from "react";
 
 interface ListExercise {
