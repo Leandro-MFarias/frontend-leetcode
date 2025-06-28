@@ -1,28 +1,9 @@
 "use client";
 
-import { listsExercise } from "@/services/listExercise";
-import { useEffect, useState } from "react";
-
-interface ListExercise {
-  id: number
-  title: string
-  description: string
-  exercise: { id: number }[]
-}
+import { useList } from "@/context/listfilter";
 
 export function AsideLists() {
-  const [lists, setLists] = useState<ListExercise[]>([]);
-
-  useEffect(() => {
-    async function fetching() {
-      const response = await listsExercise();
-      const data = response.listExercises;
-      console.log(data);
-      setLists(data);
-    }
-
-    fetching();
-  }, []);
+  const { lists } = useList()
 
   return (
     <aside className="flex flex-col h-screen border-r-1 border-zinc-800 p-6 space-y-6">

@@ -1,4 +1,4 @@
-import { api } from "./auth";
+import { api } from "./user-and-auth";
 
 export async function listsExercise() {
   const res = await fetch(`${api}/listExercise`, {
