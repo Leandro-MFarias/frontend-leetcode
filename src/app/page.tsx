@@ -3,7 +3,7 @@
 import { ListsProvider } from "@/context/listfilter";
 import { AsideLists } from "./components/aside-lists";
 import { Header } from "./components/header";
-import { Dashboard } from "./components/dashboard";
+import { MainContent } from "./components/main-content";
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
       <Header />
       <div className="grid grid-cols-[380px_1fr]">
         <AsideLists />
-        <Dashboard />
+        <MainContent />
       </div>
     </ListsProvider>
   );

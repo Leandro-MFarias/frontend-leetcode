@@ -14,7 +14,11 @@ import { ExerciseSchema, exerciseSchema } from "@/validators/exercise";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
-export function FormExercise() {
+interface FormExerciseProps {
+  setIsOpen: () => void
+} 
+
+export function FormExercise({ setIsOpen }: FormExerciseProps) {
   const { lists } = useList();
   const {
     register,
@@ -29,11 +33,10 @@ export function FormExercise() {
   async function onSubmitForm(data: ExerciseSchema) {
     try {
       await createExercise(data)
-      console.log("Criado com sucesso!");
+      setIsOpen()
     } catch (error) {
       console.log(error);
     }
-    console.log(data);
   }
 
   return (
@@ -62,7 +65,7 @@ export function FormExercise() {
             <SelectValue placeholder="Lista de Exercício" />
           </SelectTrigger>
           <SelectContent>
-            {lists.map((list) => (
+            {lists && lists.map((list) => (
               <SelectItem key={list.id} value={String(list.id)}>
                 {list.title}
               </SelectItem>

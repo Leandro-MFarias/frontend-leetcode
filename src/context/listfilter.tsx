@@ -1,17 +1,37 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from "react"
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { listsExercise } from "@/services/listExercise";
 
-const ListsContext = createContext(null)
-
-interface ListExercise {
-  id: number
-  title: string
-  description: string
-  exercise: { id: number }[]
+export interface ListExercise {
+  id: number;
+  title: string;
+  description: string;
+  exercises: {
+    id: number;
+    title: string;
+    subtitle: string;
+    description: string;
+    functionSignature: string;
+    exemple: { entrada: string; saida: string }[];
+    testCases: { input: string; expectedOutput: string }[];
+  }[];
 }
 
+interface ListContextType {
+  lists: ListExercise[];
+  selectedList: ListExercise | null;
+  setSelectedList: (list: ListExercise | null) => void;
+}
+
+const ListsContext = createContext<ListContextType | undefined>(undefined);
+
 export function ListsProvider({ children }: { children: ReactNode }) {
-  const [selectedList, setSelectedList] = useState()
+  const [selectedList, setSelectedList] = useState<ListExercise | null>(null);
   const [lists, setLists] = useState<ListExercise[]>([]);
 
   useEffect(() => {
@@ -25,17 +45,17 @@ export function ListsProvider({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <ListsContext.Provider value={{selectedList, setSelectedList, lists}}>
+    <ListsContext.Provider value={{ selectedList, setSelectedList, lists }}>
       {children}
     </ListsContext.Provider>
-  )
+  );
 }
 
 export function useList() {
-  const context = useContext(ListsContext)
-  
+  const context = useContext(ListsContext);
+
   if (!context) {
-    throw new Error("Acesse list dentro de um contexto")
+    throw new Error("Acesse list dentro de um contexto");
   }
-  return context
+  return context;
 }

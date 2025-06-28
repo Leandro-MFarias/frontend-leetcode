@@ -1,9 +1,13 @@
 "use client";
 
-import { useList } from "@/context/listfilter";
+import { ListExercise, useList } from "@/context/listfilter";
 
 export function AsideLists() {
-  const { lists } = useList()
+  const { lists, setSelectedList } = useList();
+
+  function handleShowList(list: ListExercise) {
+    setSelectedList(list);
+  }
 
   return (
     <aside className="flex flex-col h-screen border-r-1 border-zinc-800 p-6 space-y-6">
@@ -14,12 +18,15 @@ export function AsideLists() {
 
       <nav>
         <ul className="space-y-4">
-          {lists &&
+          {!lists ? (
+            <li>Nenhuma lista encontrada</li>
+          ) : (
             lists.map((list) => (
               <li key={list.id} className="text-muted-foreground">
-                {list.title}
+                <button onClick={() => handleShowList(list)}>{list.title}</button>
               </li>
-            ))}
+            ))
+          )}
         </ul>
       </nav>
     </aside>

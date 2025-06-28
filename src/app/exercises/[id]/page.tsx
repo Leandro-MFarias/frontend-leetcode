@@ -1,5 +1,5 @@
 import { DescriptionExercise } from "@/app/components/description-exercise";
-import { EditorAndTests } from "@/app/components/editor-tests";
+import { EditorAndTests } from "@/app/components/exercise-page/editor-tests";
 import exercises from "@/api/exercises.json";
 
 export default async function Exercise({
