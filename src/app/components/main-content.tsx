@@ -11,32 +11,58 @@ import {
 import { useState } from "react";
 import { FormExercise } from "./form-exercise";
 import { useList } from "@/context/listfilter";
+import { CircleDotDashedIcon } from "lucide-react";
+import { useUser } from "@/context/userInfo";
+import Link from "next/link";
 
 export function MainContent() {
   const [isOpen, setIsOpen] = useState(false);
   const { selectedList } = useList();
-
-  // if (!selectedList) {
-  //   return <h2>Nehum Exercício no momento!</h2>;
-  // }
+  const { userInfo } = useUser();
 
   return (
-    <div className="flex flex-col px-8 pt-6 space-y-10">
-      {selectedList
-        ? selectedList.exercises.map((exercise) => (
-          <div key={exercise.id}>{exercise.title}</div>
-        ))
-        : ""}
+    <div className="py-6 px-8 space-y-14">
+      {userInfo && userInfo.role === "ADMIN" && (
+        <div className="flex items-center justify-between">
+          <Button onClick={() => setIsOpen(true)} className="cursor-pointer">
+            Criar Exercício
+          </Button>
+        </div>
+      )}
 
-      <div className="flex justify-between items-center">
-        <h1 className="text-xl">Listas de exercicio 1</h1>
-        <Button onClick={() => setIsOpen(true)}>Criar Exercício</Button>
-      </div>
-      <div className="border rounded-3xl max-w-[480px] p-4 space-y-4">
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+      <div className="grid grid-cols-3 gap-4">
+        <div className="space-y-2 col-span-2">
+          <h1 className="text-xl">{selectedList?.title}</h1>
+
+          <div className="flex flex-col border p-4 space-y-5 rounded-md">
+            {selectedList?.exercises.length === 0 ? (
+              <p className="text-muted-foreground text-center text-xl">
+                Nehum Exercício!
+              </p>
+            ) : (
+              selectedList?.exercises.map((exercise) => (
+                <div
+                  key={exercise.id}
+                  className="w-full flex items-center justify-between px-6"
+                >
+                  <Link href={`/exercises/${exercise.id}`}>
+                    <button className="text-lg font-bold text-muted-foreground hover:text-white transition duration-150 ease-in cursor-pointer">
+                      {exercise.title}
+                    </button>
+                  </Link>
+                  <CircleDotDashedIcon className="text-muted-foreground" />
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+
+        <div className="space-y-2">
+          <h2 className="text-xl">Seus exercícios Finalizados</h2>
+          <div className="flex flex-col border p-4 space-y-4 rounded-md">
+            <h2 className="text-center">Nenhum exercício finalizado ainda</h2>
+          </div>
+        </div>
       </div>
 
       {/* FORM EXERCISE */}

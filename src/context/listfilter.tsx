@@ -10,7 +10,6 @@ import { listsExercise } from "@/services/listExercise";
 export interface ListExercise {
   id: number;
   title: string;
-  description: string;
   exercises: {
     id: number;
     title: string;
@@ -25,20 +24,23 @@ export interface ListExercise {
 interface ListContextType {
   lists: ListExercise[];
   selectedList: ListExercise | null;
-  setSelectedList: (list: ListExercise | null) => void;
+  setSelectedList: (list: ListExercise) => void;
 }
 
 const ListsContext = createContext<ListContextType | undefined>(undefined);
 
 export function ListsProvider({ children }: { children: ReactNode }) {
-  const [selectedList, setSelectedList] = useState<ListExercise | null>(null);
   const [lists, setLists] = useState<ListExercise[]>([]);
+  const [selectedList, setSelectedList] = useState<ListExercise | null>(null);
 
   useEffect(() => {
     async function fetching() {
       const response = await listsExercise();
       const data = response.listExercises;
       setLists(data);
+      if (data.length > 0) {
+        setSelectedList(data[0])
+      }
     }
 
     fetching();

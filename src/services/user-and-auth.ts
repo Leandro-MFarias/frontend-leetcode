@@ -40,7 +40,7 @@ export async function logout() {
   return;
 }
 
-export async function userInfo() {
+export async function getUserInfo() {
   const res = await fetch(`${api}/user`, {
     method: "GET",
     credentials: "include",

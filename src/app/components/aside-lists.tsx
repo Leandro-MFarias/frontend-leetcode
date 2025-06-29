@@ -22,8 +22,13 @@ export function AsideLists() {
             <li>Nenhuma lista encontrada</li>
           ) : (
             lists.map((list) => (
-              <li key={list.id} className="text-muted-foreground">
-                <button onClick={() => handleShowList(list)}>{list.title}</button>
+              <li key={list.id}>
+                <button
+                  onClick={() => handleShowList(list)}
+                  className="text-muted-foreground hover:text-white transition duration-150 ease-in cursor-pointer"
+                >
+                  {list.title}
+                </button>
               </li>
             ))
           )}
