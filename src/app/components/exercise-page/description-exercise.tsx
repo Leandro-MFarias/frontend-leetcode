@@ -1,7 +1,14 @@
+"use client"
+
 import { ScanTextIcon } from "lucide-react";
 import { ContainerHeader } from "./exercise-header";
+import { useExercise } from "@/context/exercise";
 
-export function DescriptionExercise({ exercise }) {
+export function DescriptionExercise() {
+  const { exercise } = useExercise()
+
+  if (!exercise) return 
+
   return (
     <div className="bg-[#1e1e1e] rounded-xl h-full border shadow-md">
       <ContainerHeader

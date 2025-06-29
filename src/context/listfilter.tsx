@@ -13,11 +13,6 @@ export interface ListExercise {
   exercises: {
     id: number;
     title: string;
-    subtitle: string;
-    description: string;
-    functionSignature: string;
-    exemple: { entrada: string; saida: string }[];
-    testCases: { input: string; expectedOutput: string }[];
   }[];
 }
 

@@ -1,6 +1,6 @@
-import { DescriptionExercise } from "@/app/components/description-exercise";
+import { DescriptionExercise } from "@/app/components/exercise-page/description-exercise";
 import { EditorAndTests } from "@/app/components/exercise-page/editor-tests";
-import exercises from "@/api/exercises.json";
+import { ExerciseProvider } from "@/context/exercise";
 
 export default async function Exercise({
   params,
@@ -8,19 +8,16 @@ export default async function Exercise({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const exercise = exercises.find((ex) => ex.id === Number(id));
-
-  if (!exercise) {
-    return console.log("Sem exercicio");
-  }
 
   return (
-    <div className="h-screen grid grid-cols-2 p-4 space-x-4">
-      {/* DESCRIPTION EXERCICE */}
-      <DescriptionExercise exercise={exercise} />
+    <ExerciseProvider exerciseId={id}>
+      <div className="h-screen grid grid-cols-2 p-4 space-x-4">
+        {/* DESCRIPTION EXERCICE */}
+        <DescriptionExercise />
 
-      {/* EDITOR AND TESTCASE */}
-      <EditorAndTests exercise={exercise} />
-    </div>
+        {/* EDITOR AND TESTCASE */}
+        <EditorAndTests />
+      </div>
+    </ExerciseProvider>
   );
 }

@@ -34,7 +34,7 @@ export function MainContent() {
         <div className="space-y-2 col-span-2">
           <h1 className="text-xl">{selectedList?.title}</h1>
 
-          <div className="flex flex-col border p-4 space-y-5 rounded-md">
+          <div className="flex flex-start flex-col border p-4 space-y-5 rounded-md">
             {selectedList?.exercises.length === 0 ? (
               <p className="text-muted-foreground text-center text-xl">
                 Nehum Exercício!

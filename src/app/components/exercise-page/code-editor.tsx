@@ -3,22 +3,18 @@
 import { CloudUploadIcon, CodeXmlIcon } from "lucide-react";
 import { ContainerHeader } from "./exercise-header";
 import { Editor } from "@monaco-editor/react";
-import { options, url } from "@/api/route";
 import { useState } from "react";
+import { useExercise } from "@/context/exercise";
 
-export function CodeEditor({ exercise }) {
+export function CodeEditor() {
+  const { exercise } = useExercise()
   const [code, setCode] = useState<string>("");
 
   async function handleSubmit(e) {
     e.preventDefault();
-    try {
-      const response = await fetch(url, options);
-      const result = await response.text();
-      console.log(result);
-    } catch (error) {
-      console.error(error);
-    }
   }
+
+  if (!exercise) return 
 
   return (
     <div className="bg-[#1e1e1e] rounded-xl border shadow-md space-y-3 h-[80%]">

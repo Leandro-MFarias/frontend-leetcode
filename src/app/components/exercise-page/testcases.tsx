@@ -4,13 +4,17 @@ import { SquareCheckBigIcon } from "lucide-react";
 import { ContainerHeader } from "./exercise-header";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { useExercise } from "@/context/exercise";
 
-export function TestCases({ exercise }) {
+export function TestCases() {
+  const { exercise } = useExercise()
   const [isCase, setIsCase] = useState(0);
 
   function handleCase(i: number) {
     setIsCase(i);
   }
+
+  if (!exercise) return
 
   return (
     <div className="bg-[#1e1e1e] h-5/12 rounded-xl border shadow-md">
