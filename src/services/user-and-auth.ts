@@ -1,6 +1,6 @@
 import { LoginSchema, RegisterSchema } from "@/app/(auth)/_validators";
 
-export const api = "http://localhost:3333";
+export const api = "https://mais-prati-leetcode.onrender.com";
 
 export async function createAccount(data: RegisterSchema) {
   const res = await fetch(`${api}/register`, {
