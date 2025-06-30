@@ -16,8 +16,7 @@ export async function createAccount(data: RegisterSchema) {
     throw new Error(error.message);
   }
 
-  const response = await res.json();
-  return response
+  return res.json();
 }
 
 export async function singIn(data: LoginSchema) {
@@ -29,7 +28,5 @@ export async function singIn(data: LoginSchema) {
     credentials: "include", // Isso aqui faz enviar cookies
     body: JSON.stringify(data),
   });
-  
-  const response = await res.json();
-  return response
+  return res.json();
 }

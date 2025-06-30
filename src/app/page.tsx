@@ -1,5 +1,3 @@
-"use client";
-
 import { ListsProvider } from "@/context/listfilter";
 import { AsideLists } from "./components/aside-lists";
 import { Header } from "./components/header";
