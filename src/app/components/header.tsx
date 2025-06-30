@@ -16,7 +16,7 @@ export function Header() {
 
   async function handleLogout() {
     await logout();
-    router.push("/login");
+    router.push("/");
   }
 
   if (!userInfo) return;

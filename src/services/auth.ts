@@ -20,7 +20,7 @@ export async function createAccount(data: RegisterSchema) {
 }
 
 export async function singIn(data: LoginSchema) {
-  const res = await fetch(`${apiPublic}/login`, {
+  const res = await fetch(`${apiPublic}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
