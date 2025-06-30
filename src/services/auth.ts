@@ -20,7 +20,7 @@ export async function createAccount(data: RegisterSchema) {
 }
 
 export async function singIn(data: LoginSchema) {
-  const res = await fetch(`${apiPublic}`, {
+  const res = await fetch(`${apiPublic}/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -28,5 +28,6 @@ export async function singIn(data: LoginSchema) {
     credentials: "include", // Isso aqui faz enviar cookies
     body: JSON.stringify(data),
   });
+  
   return res.json();
 }
