@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { getUserInfo } from "@/services/user-and-auth";
+import { getUserInfo } from "@/services/user";
 import {
   createContext,
   ReactNode,
@@ -30,7 +30,7 @@ interface UserContextType {
   userInfo: UserInfoType | null;
 }
 
-const UserContext = createContext<UserContextType | null >(null);
+const UserContext = createContext<UserContextType | null>(null);
 
 export function UserProvider({ children }: { children: ReactNode }) {
   const [userInfo, setUserInfo] = useState<UserInfoType | null>(null);

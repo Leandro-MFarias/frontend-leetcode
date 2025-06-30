@@ -1,7 +1,7 @@
-import { api } from "./user-and-auth";
+import { apiPrivate } from "./api";
 
 export async function listsExercise() {
-  const res = await fetch(`${api}/listExercise`, {
+  const res = await fetch(`${apiPrivate}/listExercise`, {
     method: "GET",
     credentials: "include",
   });

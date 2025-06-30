@@ -1,7 +1,7 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { createAccount } from "../../../services/user-and-auth";
+import { createAccount } from "../../../services/auth";
 import { RegisterSchema, registerSchema } from "../_validators";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
