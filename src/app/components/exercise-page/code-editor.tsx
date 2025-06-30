@@ -3,14 +3,14 @@
 import { CloudUploadIcon, CodeXmlIcon } from "lucide-react";
 import { ContainerHeader } from "./exercise-header";
 import { Editor } from "@monaco-editor/react";
-import { useState } from "react";
+// import { useState } from "react";
 import { useExercise } from "@/context/exercise";
 
 export function CodeEditor() {
   const { exercise } = useExercise()
-  const [code, setCode] = useState<string>("");
+  // const [code, setCode] = useState<string>("");
 
-  async function handleSubmit(e) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
   }
 
@@ -33,7 +33,7 @@ export function CodeEditor() {
             fontSize: 14,
             minimap: { enabled: false },
           }}
-          onChange={(e) => setCode(e.target.value)}
+          // onChange={(e) => setCode(e.target.value)}
         />
 
         {/* RUN CODE */}

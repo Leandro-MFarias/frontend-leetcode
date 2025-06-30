@@ -32,7 +32,7 @@ export function DescriptionExercise() {
         <div className="space-y-4">
           {exercise.exemple.map((item, index) => (
             <div key={index} className="space-y-1">
-              <h4 className="font-bold">Exemplo: {item.exemplo}</h4>
+              <h4 className="font-bold">Exemplo: {index}</h4>
               <div className="border-2 shadow-md p-3 rounded-md">
                 <p>
                   <span className="font-bold">Entrada:</span> {item.entrada}

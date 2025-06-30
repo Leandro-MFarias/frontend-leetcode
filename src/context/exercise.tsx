@@ -33,7 +33,6 @@ export function ExerciseProvider({ children, exerciseId }: { children: ReactNode
   useEffect(() => {
     async function getExercise(exercideId: string) {
       const result = await fetchingExercise(exercideId)
-      console.log(result);
       setExercise(result)
     }
 
