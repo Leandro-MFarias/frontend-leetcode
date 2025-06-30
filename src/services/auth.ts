@@ -16,7 +16,8 @@ export async function createAccount(data: RegisterSchema) {
     throw new Error(error.message);
   }
 
-  return res.json();
+  const response = await res.json();
+  return response
 }
 
 export async function singIn(data: LoginSchema) {
@@ -29,5 +30,6 @@ export async function singIn(data: LoginSchema) {
     body: JSON.stringify(data),
   });
   
-  return res.json();
+  const response = await res.json();
+  return response
 }
