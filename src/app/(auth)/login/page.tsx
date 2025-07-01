@@ -20,7 +20,7 @@ export default function Login() {
   async function onSubmit(data: LoginSchema) {
     try {
       await singIn(data);
-      console.log(document.cookie);
+      console.log("cookie aqui", document.cookie);
       router.push("/");
     } catch (error) {
       console.log("Login erro:", error);
