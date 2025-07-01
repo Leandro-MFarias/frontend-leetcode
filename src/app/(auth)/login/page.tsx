@@ -20,7 +20,7 @@ export default function Login() {
   async function onSubmit(data: LoginSchema) {
     try {
       await singIn(data);
-      const result = await fetch("http://localhost:3333/test/test", {
+      const result = await fetch("https://backend-leetcode-production.up.railway.app/test/test", {
         credentials: "include",
       })
       const res = await result.json()
