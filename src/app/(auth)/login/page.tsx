@@ -5,10 +5,10 @@ import { useForm } from "react-hook-form";
 import { LoginSchema, loginSchema } from "../_validators";
 import { singIn } from "@/services/auth";
 import Link from "next/link";
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
-  // const router = useRouter();
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -20,19 +20,7 @@ export default function Login() {
   async function onSubmit(data: LoginSchema) {
     try {
       await singIn(data);
-      const result = await fetch(
-        "https://backend-leetcode-production.up.railway.app/test/test",
-        {
-          credentials: "include",
-        }
-      );
-      const res = await result.json();
-      console.log("test", res.message);
-
-      if (res.message === "RECEBIDOO") {
-        console.log("Redirecionando via window.location.href");
-        window.location.href = "/";
-      }
+      router.push("/");
     } catch (error) {
       console.log("Login erro:", error);
     }
