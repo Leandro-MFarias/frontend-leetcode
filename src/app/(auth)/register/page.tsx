@@ -101,7 +101,7 @@ export default function Register() {
             {isSubmitting ? "Carregando..." : "Fazer Cadastro"}
           </button>
         </form>
-        <Link href="/login">
+        <Link href="/">
           <p className="text-muted-foreground text-center text-lg">
             Não possui cadastro?
             <span className="font-bold text-white"> Faça o login</span>
