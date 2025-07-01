@@ -20,7 +20,11 @@ export default function Login() {
   async function onSubmit(data: LoginSchema) {
     try {
       await singIn(data);
-      console.log("cookie aqui", document.cookie);
+      const result = await fetch("http://localhost:3333/test/test", {
+        credentials: "include",
+      })
+      const res = await result.json()
+      console.log("test", res.message);
       router.push("/");
     } catch (error) {
       console.log("Login erro:", error);
