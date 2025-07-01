@@ -19,8 +19,8 @@ export default function Login() {
 
   async function onSubmit(data: LoginSchema) {
     try {
-      const res = await singIn(data);
-      console.log(res.message);
+      await singIn(data);
+      console.log(document.cookie);
       router.push("/");
     } catch (error) {
       console.log("Login erro:", error);
