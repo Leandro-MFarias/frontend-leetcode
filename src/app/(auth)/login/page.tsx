@@ -20,12 +20,19 @@ export default function Login() {
   async function onSubmit(data: LoginSchema) {
     try {
       await singIn(data);
-      const result = await fetch("https://backend-leetcode-production.up.railway.app/test/test", {
-        credentials: "include",
-      })
-      const res = await result.json()
+      const result = await fetch(
+        "https://backend-leetcode-production.up.railway.app/test/test",
+        {
+          credentials: "include",
+        }
+      );
+      const res = await result.json();
       console.log("test", res.message);
-      router.push("/");
+
+      if (res.message === "RECEBIDOO") {
+        console.log("Redirecionando para /");
+        router.push("/");
+      }
     } catch (error) {
       console.log("Login erro:", error);
     }
