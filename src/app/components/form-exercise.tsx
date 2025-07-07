@@ -118,6 +118,21 @@ export function FormExercise({ setIsOpen }: FormExerciseProps) {
         )}
       </div>
 
+      {/* FUNCTION NAME */}
+      <div className="space-y-1">
+        <input
+          type="text"
+          placeholder="nome da função"
+          className="border px-2 py-1.5 rounded-md outline-0 w-full"
+          {...register("functionName")}
+        />
+        {errors.functionName?.message && (
+          <p className="text-red-600 text-sm font-bold">
+            {errors.functionName.message}
+          </p>
+        )}
+      </div>
+
       {/* FUNCTIONSIGNATURE */}
       <div className="space-y-1">
         <input

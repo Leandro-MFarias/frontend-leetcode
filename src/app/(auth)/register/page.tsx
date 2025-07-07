@@ -30,7 +30,7 @@ export default function Register() {
     <div className="relative flex flex-col items-center h-screen bg-neutral-900 space-y-14 pt-16">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(168,85,247,0.2),_transparent_60%)]" />
 
-      <h1 className="text-5xl font-bold text- pr-6">+praTi</h1>
+      <h1 className="text-5xl font-bold pr-6">+praTi</h1>
       <div className="z-50 space-y-1">
         <form
           onSubmit={handleSubmit(onSubmit)}

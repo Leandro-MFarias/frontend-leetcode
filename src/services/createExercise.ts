@@ -1,8 +1,8 @@
 import { ExerciseSchema } from "@/validators/exercise";
-import { apiPrivate } from "./api";
+import { api } from "./api";
 
 export async function createExercise(data: ExerciseSchema) {
-  const res = await fetch(`${apiPrivate}/createExercise`, {
+  const res = await fetch(`${api}/createExercise`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

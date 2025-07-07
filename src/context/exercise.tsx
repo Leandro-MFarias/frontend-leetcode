@@ -1,11 +1,18 @@
-"use client"
+"use client";
 
 import { fetchingExercise } from "@/services/exercise";
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 interface ExerciseType {
   id: number;
   title: string;
+  functionName: string;
   subtitle: string;
   description: string;
   functionSignature: string;
@@ -14,6 +21,9 @@ interface ExerciseType {
   lista: {
     id: number;
     title: string;
+  };
+  language: {
+    code: number;
   };
   progress: {
     id: number;
@@ -25,32 +35,40 @@ interface ExerciseType {
   }[];
 }
 
-const ExerciseContext = createContext<{ exercise: ExerciseType | null } | undefined>(undefined)
+const ExerciseContext = createContext<
+  { exercise: ExerciseType | null } | undefined
+>(undefined);
 
-export function ExerciseProvider({ children, exerciseId }: { children: ReactNode, exerciseId: string }) {
-  const [ exercise, setExercise ] = useState<ExerciseType | null>(null)
+export function ExerciseProvider({
+  children,
+  exerciseId,
+}: {
+  children: ReactNode;
+  exerciseId: string;
+}) {
+  const [exercise, setExercise] = useState<ExerciseType | null>(null);
 
   useEffect(() => {
     async function getExercise(exercideId: string) {
-      const result = await fetchingExercise(exercideId)
-      setExercise(result)
+      const result = await fetchingExercise(exercideId);
+      setExercise(result);
     }
 
-    getExercise(exerciseId)
-  }, [])
+    getExercise(exerciseId);
+  }, []);
 
   return (
     <ExerciseContext.Provider value={{ exercise }}>
       {children}
     </ExerciseContext.Provider>
-  )
+  );
 }
 
 export function useExercise() {
-  const context = useContext(ExerciseContext)
+  const context = useContext(ExerciseContext);
   if (!context) {
-    throw new Error("Acesse o context Exercise dentro de um provider")
+    throw new Error("Acesse o context Exercise dentro de um provider");
   }
 
-  return context
+  return context;
 }

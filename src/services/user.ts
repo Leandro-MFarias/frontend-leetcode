@@ -1,7 +1,7 @@
-import { apiPrivate } from "./api";
+import { api } from "./api";
 
 export async function logout() {
-  await fetch(`${apiPrivate}/logout`, {
+  await fetch(`${api}/logout`, {
     method: "POST",
     credentials: "include",
   });
@@ -9,7 +9,7 @@ export async function logout() {
 }
 
 export async function getUserInfo() {
-  const res = await fetch(`${apiPrivate}/user`, {
+  const res = await fetch(`${api}/user`, {
     method: "GET",
     credentials: "include",
   });

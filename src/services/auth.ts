@@ -1,8 +1,8 @@
 import { LoginSchema, RegisterSchema } from "@/app/(auth)/_validators";
-import { apiPublic } from "./api";
+import { api } from "./api";
 
 export async function createAccount(data: RegisterSchema) {
-  const res = await fetch(`${apiPublic}/register`, {
+  const res = await fetch(`${api}/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -20,7 +20,7 @@ export async function createAccount(data: RegisterSchema) {
 }
 
 export async function singIn(data: LoginSchema) {
-  const res = await fetch(`${apiPublic}/login`, {
+  const res = await fetch(`${api}/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

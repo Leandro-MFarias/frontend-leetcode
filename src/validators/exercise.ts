@@ -3,6 +3,7 @@ import { z } from "zod/v4";
 export const exerciseSchema = z
   .object({
     title: z.string().min(3, "mínimo 3 caracteres"),
+    functionName: z.string().min(3, "mínimo 3 caracteres"),
     subtitle: z.string().min(1, "campo obrigatório"),
     description: z.string().min(1, "campo obrigatório"),
     functionSignature: z.string().min(1, "campo obrigatório"),

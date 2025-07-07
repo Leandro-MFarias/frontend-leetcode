@@ -1,7 +1,7 @@
 "use client";
 
 import { useVerifyContext } from "@/context/verifyContext";
-import { apiPrivate } from "@/services/api";
+import { api } from "@/services/api";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
@@ -11,7 +11,7 @@ export function useVerifyToken() {
 
   useEffect(() => {
     async function check() {
-      const res = await fetch(apiPrivate, {
+      const res = await fetch(`${api}/user`, {
         credentials: "include",
       });
 
@@ -23,5 +23,5 @@ export function useVerifyToken() {
     }
 
     check();
-  }, [router]);
+  }, []);
 }

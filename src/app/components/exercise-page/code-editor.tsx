@@ -3,18 +3,42 @@
 import { CloudUploadIcon, CodeXmlIcon } from "lucide-react";
 import { ContainerHeader } from "./exercise-header";
 import { Editor } from "@monaco-editor/react";
-// import { useState } from "react";
+import { useState } from "react";
 import { useExercise } from "@/context/exercise";
+import { getSubmission, sendSubmission } from "@/services/judge/submission";
 
 export function CodeEditor() {
-  const { exercise } = useExercise()
-  // const [code, setCode] = useState<string>("");
+  const { exercise } = useExercise();
+  const [editorCode, setEditorCode] = useState<string | undefined>("");
+
+  if (!exercise) return;
+
+  const {
+    functionName,
+    testCases,
+    functionSignature,
+    language: { code },
+  } = exercise;
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-  }
+    if (editorCode?.trim() === "") return alert("Erro");
 
-  if (!exercise) return 
+    const data = {
+      functionName,
+      languageId: code,
+      testCases,
+      sourceCode: editorCode,
+    };
+
+    try {
+      const submission = await sendSubmission(data);
+      const response = await getSubmission(submission.token);
+      console.log(response);
+    } catch (error) {
+      console.log("Erro", error);
+    }
+  }
 
   return (
     <div className="bg-[#1e1e1e] rounded-xl border shadow-md space-y-3 h-[80%]">
@@ -27,13 +51,13 @@ export function CodeEditor() {
         <Editor
           className="h-full"
           defaultLanguage="javascript"
-          defaultValue={exercise.functionSignature.trim()}
+          defaultValue={functionSignature.trim()}
           theme="vs-dark"
           options={{
             fontSize: 14,
             minimap: { enabled: false },
           }}
-          // onChange={(e) => setCode(e.target.value)}
+          onChange={(e) => setEditorCode(e)}
         />
 
         {/* RUN CODE */}
