@@ -7,14 +7,14 @@ import { useState } from "react";
 import { useExercise } from "@/context/exercise";
 
 export function TestCases() {
-  const { exercise } = useExercise()
+  const { exercise } = useExercise();
   const [isCase, setIsCase] = useState(0);
 
   function handleCase(i: number) {
     setIsCase(i);
   }
 
-  if (!exercise) return
+  if (!exercise) return;
 
   return (
     <div className="bg-[#1e1e1e] h-5/12 rounded-xl border shadow-md">
@@ -43,9 +43,13 @@ export function TestCases() {
             key={index}
             className={`space-y-1 ${isCase !== index && "hidden"}`}
           >
-            <p className="px-2">n = {test.input}</p>
+            <p className="px-2">{test.input}</p>
             <span className="flex bg-neutral-700/80 px-2 py-2.5 rounded-lg ml-2">
-              {test.expectedOutput}
+              {typeof test.expectedOutput === "boolean"
+                ? test.expectedOutput === true
+                  ? "True"
+                  : "False"
+                : test.expectedOutput}
             </span>
           </div>
         ))}

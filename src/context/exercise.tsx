@@ -17,7 +17,7 @@ interface ExerciseType {
   description: string;
   functionSignature: string;
   exemple: { entrada: string; saida: string }[];
-  testCases: { input: string; expectedOutput: string }[];
+  testCases: { input: string; expectedOutput: boolean | string }[];
   lista: {
     id: number;
     title: string;
